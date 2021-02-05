@@ -20,7 +20,6 @@ export default class Sentence {
     for (let i = 0; i < sentenceArray.length; i++) {
       vowelArray.push(sentenceArray[i].charAt(0));
     }
-    console.log(vowelArray);
     return vowelArray.toString(" ");
   }
 
@@ -36,10 +35,9 @@ export default class Sentence {
         justVowelArray.push(sentenceArray[i].charAt(0))
       }
     }
-    console.log(justVowelArray)
     return justVowelArray.join(",")
   }
-  addWay() {
+  addWay() { //HERE
     let vowelArray = []
     const vowels = ["a", "e", "i", "o", "u"];
     this.line = this.line.toLowerCase()
@@ -50,27 +48,71 @@ export default class Sentence {
         sentenceArray[i] = sentenceArray[i] + "way"
       }
     }
-    console.log(sentenceArray)
     return sentenceArray.join(" ")
   }
 
   consonantCheck() {
-    let vowelArray = []
-    let justVowelArray = []
-    const vowels = ["a", "e", "i", "o", "u"];
+      let vowelArray = []
+      let justVowelArray = []
+      const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+      this.line = this.line.toLowerCase()
+      let sentenceArray = this.line.split(" ")
+      for (let i = 0; i < sentenceArray.length; i++) {
+        vowelArray.push(sentenceArray[i].charAt(0));
+        if (consonants.includes(sentenceArray[i].charAt(0))) {
+          justVowelArray.push(sentenceArray[i].charAt(0))
+        }
+      }
+      return justVowelArray.join(",")
+    }
+    // moveConsonants() {
+    //   let consArray = []
+    //   const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
+    //   this.line = this.line.toLowerCase()
+    //   let sentenceArray = this.line.split(" ")
+    //   for (let i = 0; i < sentenceArray.length; i++) {
+    //     consArray.push(sentenceArray[i].charAt(0));
+    //     if (consonants.includes(sentenceArray[i].charAt(0))) {
+    //       if (consonants.includes(sentenceArray[i].charAt(1))) {
+    //         if (consonants.includes(sentenceArray[i].charAt(2))) {
+    //           sentenceArray = sentenceArray + sentenceArray.charAt(0) + sentenceArray.charAt(1) + sentenceArray.charAt(2) + "ay"
+    //           sentenceArray.slice(3)
+    //         }
+    //         sentenceArray = +sentenceArray.charAt(0) + sentenceArray.charAt(1) + "ay"
+    //         sentenceArray.slice(2)
+    //       }
+    //       sentenceArray = +sentenceArray.charAt(0) + "ay"
+    //       sentenceArray.slice(1)
+    //     }
+    //     console.log(sentenceArray)
+    //     return sentenceArray
+    //   }
+    // }
+  moveConsonants() {
     const consonants = ["b", "c", "d", "f", "g", "h", "j", "k", "l", "m", "n", "p", "q", "r", "s", "t", "v", "w", "x", "y", "z"]
     this.line = this.line.toLowerCase()
     let sentenceArray = this.line.split(" ")
+    console.log(sentenceArray)
     for (let i = 0; i < sentenceArray.length; i++) {
-      vowelArray.push(sentenceArray[i].charAt(0));
-      if (consonants.includes(sentenceArray[i].charAt(0))) {
-        justVowelArray.push(sentenceArray[i].charAt(0))
+      if (consonants.includes(sentenceArray[i].charAt(0)) && consonants.includes(sentenceArray[i].charAt(1)) && consonants.includes(sentenceArray[i].charAt(2))) {
+        sentenceArray[i] =+ sentenceArray[i].charAt(0) + sentenceArray[i].charAt(1) + sentenceArray[i].charAt(2) + "ay";
+        sentenceArray[i].slice(3);
+      } else if (consonants.includes(sentenceArray[i].charAt(0)) && consonants.includes(sentenceArray[i].charAt(1))) {
+        sentenceArray[i] =+ sentenceArray[i].charAt(0) + sentenceArray[i].charAt(1) + "ay";
+        sentenceArray[i].slice(2);
+      } else if (consonants.includes(sentenceArray[i].charAt(0))) {
+        sentenceArray[i] =+ sentenceArray[i].charAt(0) + "ay";
+        sentenceArray[i].slice(1);
       }
     }
-    console.log(justVowelArray)
-    return justVowelArray.join(",")
+    console.log(sentenceArray);
+    return sentenceArray.join(" ");
   }
+
+
 }
+
+
 
 
 

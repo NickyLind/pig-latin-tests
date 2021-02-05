@@ -26,8 +26,10 @@ describe('Pig latin sentence', () => {
   test('should add "way" to the end of words starting with vowels', () => {
     expect(reuseableSentence.addWay()).toEqual("this isway away sentence, octopusway");
   })
-  test('should recognize if first letter of each word in a sentence is a vowel', () => {
+  test('should recognize if first letter of each word in a sentence is a consonant', () => {
     expect(reuseableSentence.consonantCheck()).toEqual("t,s")
   })
-  test()
+  test('should move all starting letter consonants to end of word', () => {
+    expect(reuseableSentence.moveConsonants()).toEqual("hist is a entences, octopus")
+  })
 });
